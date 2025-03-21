@@ -3,13 +3,13 @@ name: CI/CD Workflow
 on:
   push:
     branches:
-      - 'feature/*'  # Trigger for any push to a branch starting with 'feature/'
+      - 'feature/*'  # Триггер для пушей в ветки, начинающиеся с 'feature/'
   pull_request:
     branches:
-      - 'main'  # Trigger for PRs targeting 'main'
+      - 'main'  # Триггер для PR, направленных в 'main'
 
 jobs:
-  # Job for validation and testing
+  # Job для тестирования и валидации
   test:
     runs-on: ubuntu-latest
 
@@ -20,44 +20,67 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Specify your Node.js version
+          node-version: '16'  # Укажите версию Node.js, которую используете
 
       - name: Install dependencies
         run: |
-          npm install
+          npm ci  # Используем ci для более надежной установки зависимостей
 
       - name: Run tests
         run: |
-          npm run test  # or the appropriate command to run your tests
+          npm run test  # Команда для запуска тестов, если они есть
 
+  # Проверка имени ветки, чтобы она начиналась с 'feature/'
   check-branch-name:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'  # Проверяем только на пушах в ветки
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Check branch name
-
         run: |
           branch_name=$(git symbolic-ref --short HEAD)
-          echo "test branch_name"
+          echo "___________ Текущая ветка: $branch_name"
           if [[ ! "$branch_name" =~ ^feature/.* ]]; then
             echo "❌ Неверное имя ветки. Имя ветки должно начинаться с 'feature/'."
             exit 1
           fi
           echo "Имя ветки корректное: $branch_name"
 
-  # Job for deployment (optional, can be customized)
+  # Job для деплоя
   deploy:
     needs: test
     runs-on: ubuntu-latest
-    if: success()
+    if: success()  # Деплой только если тесты прошли успешно
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Deploy to production (example)
+      - name: Deploy to production (пример)
         run: |
-          # Replace with your actual deployment command
-          echo "Deploying application..." 
+          echo "Деплой приложения..." 
+          # Замените на команду для деплоя (например, с помощью Docker, Kubernetes, и т.д.)
+
+  # Job для обновления версии и создания тега (опционально)
+  release:
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == 'true'  # Запуск только если PR был смержен
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Bump version and tag release
+        run: |
+          # Установка стандартного инструмента для работы с версиями
+          npm install standard-version --save-dev
+          npx standard-version
+          git push --follow-tags  # Создаем новый тег и пушим его

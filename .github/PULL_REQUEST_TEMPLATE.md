@@ -9,6 +9,10 @@ Please provide a brief description of the changes and what bug or task they solv
 - [ ] Refactoring
 - [ ] Other (specify)
 
+## Screenshot
+- 
+
+
 ## The checklist
 
 - [ ] I have passed the tests and they are successful.

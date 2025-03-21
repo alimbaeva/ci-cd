@@ -110,9 +110,6 @@ jobs:
           npm install -g vercel
           vercel --token ${{ secrets.GUKA_2025 }} --prod --confirm
 
-      - name: Debug GitHub Event
-        run: echo "${{ toJson(github) }}"
-
   release:
     needs: deploy
     runs-on: ubuntu-latest

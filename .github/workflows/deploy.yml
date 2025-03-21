@@ -1,0 +1,93 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - 'feature/*'
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+
+      - name: Run tests
+        run: |
+          npm run test
+
+  check-branch-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Check branch name on push
+        if: github.event_name == 'push'
+        run: |
+          branch_name=$(git symbolic-ref --short HEAD)
+          echo "Current branch: $branch_name"
+          if [[ ! "$branch_name" =~ ^feature/.* ]]; then
+            echo "❌ Invalid branch name. The branch name must start with 'feature/'"
+            exit 1
+          fi
+          echo "✅ The branch name is correct: $branch_name"
+
+      - name: Check source branch on pull request
+        if: github.event_name == 'pull_request'
+        run: |
+          branch_name="${{ github.head_ref }}"
+          echo "🔍 Checking the branch: $branch_name"
+          if [[ "$branch_name" == "test" ]]; then
+            echo "❌ DENIED: You cannot send PR from test to main."
+            exit 1
+          fi
+          echo "✅ The branch is allowed: $branch_name"
+
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: success()
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to production (example)
+        run: |
+          # Replace the deployment command with your real one
+          echo "App Deployment..." 
+
+  release:
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == 'true'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Bump version and tag release
+        run: |
+          npm install standard-version --save-dev
+          npx standard-version
+          git push --follow-tags

@@ -5,6 +5,6 @@
       "use": "@vercel/node"
     }
   ],
-  "outputDirectory": "dist",
+  "outputDirectory": "ci-cd/dist/",
   "cleanUrls": true
 }

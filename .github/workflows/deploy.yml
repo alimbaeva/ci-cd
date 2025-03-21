@@ -129,6 +129,3 @@ jobs:
           npm install standard-version --save-dev
           npx standard-version
           git push --follow-tags
-
-      - name: Debug GitHub Event
-        run: echo "${{ toJson(github) }}"

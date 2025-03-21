@@ -41,7 +41,7 @@ jobs:
       - name: Check branch name
         run: |
           branch_name=$(git symbolic-ref --short HEAD)
-          echo "___________ Текущая ветка: $branch_name"
+          echo "Текущая ветка: $branch_name"
           if [[ ! "$branch_name" =~ ^feature/.* ]]; then
             echo "❌ Неверное имя ветки. Имя ветки должно начинаться с 'feature/'."
             exit 1

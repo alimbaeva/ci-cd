@@ -93,7 +93,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' || github.event_name == 'push'
     
     steps:
       - name: Checkout code
@@ -110,10 +110,13 @@ jobs:
           npm install -g vercel
           vercel --token ${{ secrets.GUKA_2025 }} --prod --confirm
 
+      - name: Debug GitHub Event
+        run: echo "${{ toJson(github) }}"
+
   release:
     needs: deploy
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == 'true'
+    if: github.event.pull_request.merged == true
 
     steps:
       - name: Checkout code
@@ -129,3 +132,6 @@ jobs:
           npm install standard-version --save-dev
           npx standard-version
           git push --follow-tags
+
+      - name: Debug GitHub Event
+        run: echo "${{ toJson(github) }}"

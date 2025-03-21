@@ -20,20 +20,20 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Укажите версию Node.js, которую используете
+          node-version: '16'
 
       - name: Install dependencies
         run: |
-          npm ci  # Используем ci для более надежной установки зависимостей
+          npm ci  # Используем npm ci для чистой установки зависимостей
 
       - name: Run tests
         run: |
-          npm run test  # Команда для запуска тестов, если они есть
+          npm run test  # Запускаем тесты
 
   # Проверка имени ветки, чтобы она начиналась с 'feature/'
   check-branch-name:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'  # Проверяем только на пушах в ветки
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/feature/')
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -52,7 +52,7 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
-    if: success()  # Деплой только если тесты прошли успешно
+    if: success()
 
     steps:
       - name: Checkout code
@@ -60,14 +60,14 @@ jobs:
 
       - name: Deploy to production (пример)
         run: |
+          # Замените на ваш реальный команду для деплоя
           echo "Деплой приложения..." 
-          # Замените на команду для деплоя (например, с помощью Docker, Kubernetes, и т.д.)
 
   # Job для обновления версии и создания тега (опционально)
   release:
     needs: deploy
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == 'true'  # Запуск только если PR был смержен
+    if: github.event.pull_request.merged == 'true'
 
     steps:
       - name: Checkout code
@@ -80,7 +80,6 @@ jobs:
 
       - name: Bump version and tag release
         run: |
-          # Установка стандартного инструмента для работы с версиями
-          npm install standard-version --save-dev
-          npx standard-version
-          git push --follow-tags  # Создаем новый тег и пушим его
+          npm install standard-version --save-dev  # Устанавливаем стандартный инструмент для версии
+          npx standard-version  # Обновляем версию
+          git push --follow-tags  # Пушим изменения с тегом

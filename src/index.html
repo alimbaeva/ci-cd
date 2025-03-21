@@ -20,8 +20,8 @@
         </a>
         <nav class="nav">
           <ul class="nav__list">
-            <li class="nav__item"><a class="nav__link" href="/catalog">Catalog</a></li>
-            <li class="nav__item"><a class="nav__link" href="#promo">Promo code</a></li>
+            <li class="nav__item"><a aria-label="Catalog" class="nav__link" href="/catalog">Catalog</a></li>
+            <li class="nav__item"><a aria-label="Promo code" class="nav__link" href="#promo">Promo code</a></li>
             <li class="nav__item"><a class="nav__link" href="#contacts">Contacts</a></li>
           </ul>
           <a class="cart" href="/cart">
@@ -33,7 +33,7 @@
         </nav>
       </div>
     </header>
-    <main class="main">
+    <main aria-label="main content" class="main">
       <div class="main__container container" id="page-container">
       </div>
     </main>
@@ -53,9 +53,15 @@
         <div class="footer__column">
           <p class="footer__title">Contacts</p>
           <ul class="footer__list">
-            <li class="footer__item"><a href="https://yumentsel.github.io/rsschool-cv/" target="_blank">Yuliya Mentsel</a>
+            <li class="footer__item">
+              <a href="https://yumentsel.github.io/rsschool-cv/" target="_blank"  aria-label="Yuliya Mentsel Resume" title="Click to view Yuliya Mentsel's resume">
+                Yuliya Mentsel
+              </a>
             </li>
-            <li class="footer__item"><a href="https://lexarudak.github.io/rsschool-cv/" target="_blank">Aliaksei Rudak</a>
+            <li class="footer__item">
+              <a href="https://lexarudak.github.io/rsschool-cv/" target="_blank"  aria-label="Aliaksei Rudak Resume" title="Click to view Aliaksei Rudak's resume">
+                Aliaksei Rudak
+              </a>
             </li>
           </ul>
         </div>
@@ -92,105 +98,105 @@
     
       <div class="filter">
         <div class="filter__type">
-          <h3 class="filter__title">Category</h3>
+          <p class="filter__title">Category</p>
           <ul id='check-type' class="filter__list">
             <li class="check">
               <label class="check__label">Succulent
                 <input type="checkbox" class="check__input type" value="succulent">
                 <span class="check__span"></span>
               </label>
-              <div class="check__found"><span id="succulent" class="check__found-num">6</span><span> / 6</span></div>
+              <div aria-live="polite" class="check__found"><span id="succulent" class="check__found-num">6</span><span> / 6</span></div>
             </li>
             <li class="check">
               <label class="check__label">Sansevieria
                 <input type="checkbox" class="check__input type" value="sansevieria">
                 <span class="check__span"></span>
               </label>
-              <div class="check__found"><span id="sansevieria" class="check__found-num">3</span><span> / 3</span></div>
+              <div aria-live="polite" class="check__found"><span id="sansevieria" class="check__found-num">3</span><span> / 3</span></div>
             </li>
             <li class="check">
               <label class="check__label">Flowering
                 <input type="checkbox" class="check__input type" value="flowering">
                 <span class="check__span"></span>
               </label>
-              <div class="check__found"><span id="flowering" class="check__found-num">5</span><span> / 5</span></div>
+              <div aria-live="polite" class="check__found"><span id="flowering" class="check__found-num">5</span><span> / 5</span></div>
             </li>
             <li class="check">
               <label class="check__label">Fern
                 <input type="checkbox" class="check__input type" value="fern">
                 <span class="check__span"></span>
               </label>
-              <div class="check__found"><span id="fern" class="check__found-num">2</span><span> / 2</span></div>
+              <div aria-live="polite" class="check__found"><span id="fern" class="check__found-num">2</span><span> / 2</span></div>
             </li>
             <li class="check">
               <label class="check__label">Lavender
                 <input type="checkbox" class="check__input type" value="lavender">
                 <span class="check__span"></span>
               </label>
-              <div class="check__found"><span id="lavender" class="check__found-num">2</span><span> / 2</span></div>
+              <div aria-live="polite" class="check__found"><span id="lavender" class="check__found-num">2</span><span> / 2</span></div>
             </li>
             <li class="check">
               <label class="check__label">Cactus
                 <input type="checkbox" class="check__input type" value="cactus">
                 <span class="check__span"></span>
               </label>
-              <div class="check__found"><span id="cactus" class="check__found-num">3</span><span> / 3</span></div>
+              <div aria-live="polite" class="check__found"><span id="cactus" class="check__found-num">3</span><span> / 3</span></div>
             </li>
             <li class="check">
               <label class="check__label">Tree
                 <input type="checkbox" class="check__input type" value="tree">
                 <span class="check__span"></span>
               </label>
-              <div class="check__found"><span id="tree" class="check__found-num">3</span><span> / 3</span></div>
+              <div aria-live="polite" class="check__found"><span id="tree" class="check__found-num">3</span><span> / 3</span></div>
             </li>
           </ul>
         </div>
     
         <div class="filter__height type">
-          <h3 class="filter__title">Height</h3>
+          <p class="filter__title">Height</p>
           <ul class="filter__list">
             <li class="check">
               <label class="check__label">Short
                 <input type="checkbox" class="check__input" value="short">
                 <span class="check__span"></span>
               </label>
-              <div class="check__found"><span id="short" class="check__found-num">10</span><span> / 10</span></div>
+              <div aria-live="polite" class="check__found"><span id="short" class="check__found-num">10</span><span> / 10</span></div>
             </li>
             <li class="check">
               <label class="check__label">Medium
                 <input type="checkbox" class="check__input" value="medium">
                 <span class="check__span"></span>
               </label>
-              <div class="check__found"><span id="medium" class="check__found-num">9</span><span> / 9</span></div>
+              <div aria-live="polite" class="check__found"><span id="medium" class="check__found-num">9</span><span> / 9</span></div>
             </li>
             <li class="check">
               <label class="check__label">Tall
                 <input type="checkbox" class="check__input" value="tall">
                 <span class="check__span"></span>
               </label>
-              <div class="check__found"><span id="tall" class="check__found-num">5</span><span> / 5</span></div>
+              <div aria-live="polite" class="check__found"><span id="tall" class="check__found-num">5</span><span> / 5</span></div>
             </li>
           </ul>
         </div>
     
         <div class="filter__price">
-          <h3 class="filter__title">Price</h3>
+          <p class="filter__title">Price</p>
           <div class="range">
             <div class="range__value">
-              <span>min</span>
-              <input type="number" class="input-min" value="1" max="100">
+              <label for="price min">min</label>
+              <input id="price min" type="number" class="input-min" value="1" max="100" aria-label="Quantity minimum">
               <span>$</span>
               <div class="range__separator">-</div>
-              <span>max</span>
-              <input type="number" class="input-max" value="100" max="100">
+              <label for="price max">max</label>
+              <input id="price max" type="number" class="input-max" value="100" max="100" aria-label="Quantity maximum">
               <span>$</span>
             </div>
             <div class="range__slider slider">
               <div class="slider__progress"></div>
             </div>
             <div class="range__range-input">
-              <input type="range" class="range-min" min="1" max="106" value="1" step="1">
-              <input type="range" class="range-max" min="1" max="100" value="100" step="1">
+              <input type="range" class="range-min" min="1" max="106" value="1" step="1" aria-label="Select a value between 1 and 106">
+              <input type="range" class="range-max" min="1" max="100" value="100" step="1" aria-label="Select a value between 1 and 100">
             </div>
           </div>
         </div>
@@ -204,14 +210,14 @@
         </div>
     
         <div class="filter__stock">
-          <h3 class="filter__title">Stock</h3>
+          <p class="filter__title">Stock</p>
           <div class="range">
             <div class="range__value">
-              <span>min</span>
-              <input type="number" class="input-min" value="1" max="65">
+              <label for="stock min">min</label>
+              <input id="stock min" type="number" class="input-min" value="1" max="65">
               <div class="range__separator">-</div>
-              <span>max</span>
-              <input type="number" class="input-max" value="65" max="65">
+              <label for="stock max">max</label>
+              <input id="stock max" type="number" class="input-max" value="65" max="65">
             </div>
             <div class="range__slider slider">
               <div class="slider__progress"></div>
@@ -287,7 +293,7 @@
   <template id="product-page">
     <section class="product-page page">
       <div class="link-navigation">
-        <a class="link-navigation__link" href="/catalog">Catalog</a>
+        <a aria-label="Catalog" class="link-navigation__link" href="/catalog">Catalog</a>
         <span class="link-navigation__slash"> / </span>
         <a class="link-navigation__link catalog-filter-link" href="#"></a>
         <span class="link-navigation__slash"> / </span>
@@ -331,7 +337,7 @@
   <template id="cart">
     <section class="cart-page page">
       <div class="link-navigation">
-        <a class="link-navigation__link " href="/catalog">Catalog</a>
+        <a aria-label="Catalog" class="link-navigation__link " href="/catalog">Catalog</a>
         <span class="link-navigation__slash"> / </span>
         <a class="link-navigation__link" href="/cart">Cart</a>
       </div>
@@ -347,7 +353,7 @@
           <img class="empty-cart-page__img" src="./assets/svg/empty-cart-icon.svg" alt="empty cart icon">
           <div class="empty-cart-page__block">
             <p class="empty-cart-page__text">Your cart is empty.</p>
-            <a class="empty-cart__btn button" href="/catalog">Go to catalog</a>
+            <a aria-label="Catalog" class="empty-cart__btn button" href="/catalog">Go to catalog</a>
           </div>
         </section>
       </template>

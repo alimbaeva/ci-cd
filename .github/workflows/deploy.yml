@@ -51,7 +51,7 @@ jobs:
         run: |
           branch_name="${{ github.head_ref }}"
           echo "🔍 Checking the branch: $branch_name"
-          if [[ "$branch_name" == "test" ]]; then
+          if [[ ! "$branch_name" =~ ^feature/.* ]]; then
             echo "❌ DENIED: You cannot send PR from test to main."
             exit 1
           fi

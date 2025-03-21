@@ -30,23 +30,35 @@ jobs:
         run: |
           npm run test  # Запускаем тесты
 
-  # Проверка имени ветки, чтобы она начиналась с 'feature/'
+  # Проверка имени ветки и запрет PR из test в main
   check-branch-name:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/feature/')
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Check branch name
+      - name: Check branch name on push
+        if: github.event_name == 'push'
         run: |
           branch_name=$(git symbolic-ref --short HEAD)
           echo "Текущая ветка: $branch_name"
           if [[ ! "$branch_name" =~ ^feature/.* ]]; then
-            echo "❌ Неверное имя ветки. Имя ветки должно начинаться с 'feature/'."
+            echo "❌ Неверное имя ветки. Имя ветки должно начинаться с 'feature/'"
             exit 1
           fi
-          echo "Имя ветки корректное: $branch_name"
+          echo "✅ Имя ветки корректное: $branch_name"
+
+      - name: Check source branch on pull request
+        if: github.event_name == 'pull_request'
+        run: |
+          branch_name="${{ github.head_ref }}"
+          echo "🔍 Проверка ветки: $branch_name"
+          if [[ "$branch_name" == "test" ]]; then
+            echo "❌ ОТКАЗАНО: Нельзя отправлять PR из test в main."
+            exit 1
+          fi
+          echo "✅ Ветка разрешена: $branch_name"
+
 
   # Job для деплоя
   deploy:

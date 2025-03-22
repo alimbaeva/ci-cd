@@ -275,27 +275,29 @@
       </div>
     </section>
   </template>
-      <!-- product card -->
-      <template id="productCardTemp">
-        <div id="product" class="product">
-          <div class="product__photo">
-            <div class="product__icons">
-              <div class="product__discount"><div class="product__discount-num">20</div><span>%</span></div>
-              <div class="product__rating"><div class="product__rating-num">4.5</div><span>&#9734;</span></div>
-            </div>
+  <!-- product card -->
+  <template id="productCardTemp">
+    <div id="product" class="product">
+      <div class="product__photo">
+        <div class="product__icons">
+          <div class="product__discount" role="status">
+            <div class="product__discount-num">20</div><span aria-hidden="true">%</span>
           </div>
-          <div class="product__info">
-            <div class="product__type"></div>
-            <h2 class="product__title"></h2>
-            <p class="product__description"></p>
-            <div class="product__purchase">
-              <div class="product__price usd-symbol"></div>
-              <button class="product__button button"></button>
-            </div>
-            <div class="product__stock">In stock: <span class="product__stock-num">28</span></div>
-          </div>
+          <div class="product__rating"><div class="product__rating-num">4.5</div><span aria-hidden="true">&#9734;</span></div>
         </div>
-      </template>
+      </div>
+      <div class="product__info">
+        <div class="product__type"></div>
+        <h2 class="product__title"></h2>
+        <p class="product__description"></p>
+        <div class="product__purchase">
+          <div class="product__price usd-symbol"></div>
+          <button class="product__button button" aria-label="Add to cart"></button>
+        </div>
+        <div class="product__stock">In stock: <span class="product__stock-num">28</span></div>
+      </div>
+    </div>
+  </template>
   <!-- product page -->
   <template id="product-page">
     <section class="product-page page">

@@ -52,7 +52,7 @@
   width: 200px;
   border: solid 1px variables.$grey-medium;
   border-radius: 14px;
-  outline: none;
+  // outline: none;
   background: url('assets/svg/search.svg') 95% center no-repeat;
   background-size: 15px;
   padding: 0 10px;
@@ -63,6 +63,12 @@
   &::placeholder {
     color: variables.$grey-medium;
     font-weight: 400;
+  }
+
+  &:focus {
+    border: 2px solid lightblue;
+    box-shadow: 0 0 5px lightblue;
+    outline: none;
   }
 
   @media (max-width: 630px) {

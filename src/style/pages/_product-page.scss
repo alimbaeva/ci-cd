@@ -144,6 +144,12 @@
   width: 60%;
   position: relative;
 
+  .product-page__add-to-cart-btn:focus-visible,
+  .product-page__buy-now-btn:focus-visible {
+    outline: 2px solid #ff9900;
+    outline-offset: 2px;
+  }
+
   @media (max-width: 600px) {
     width: 100%;
   }

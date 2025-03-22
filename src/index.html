@@ -301,27 +301,26 @@
   <!-- product page -->
   <template id="product-page">
     <section class="product-page page">
-      <div class="link-navigation">
+      <nav class="link-navigation" aria-label="Breadcrumb">
         <a aria-label="Catalog" class="link-navigation__link" href="/catalog">Catalog</a>
-        <span class="link-navigation__slash"> / </span>
+        <span class="link-navigation__slash" aria-hidden="true"> / </span>
         <a class="link-navigation__link catalog-filter-link" href="#"></a>
-        <span class="link-navigation__slash"> / </span>
+        <span class="link-navigation__slash" aria-hidden="true"> / </span>
         <a class="link-navigation__link this-page-link" href="#"></a>
-      </div>
+      </nav>
       <h2 class="page-title" id="product-title"></h2>
       <div class="product-page__top-block">
-        <div class="product-page__photo-block">
-        </div>
+        <figure class="product-page__photo-block"></figure>
         <div class="product-page__sales-block">
           <div class="product-page__stoke-block">
             <span class="product-page__stoke-text">In stock</span>
-            <span class="product-page__stoke-amount"></span>
+            <span class="product-page__stoke-amount" aria-live="polite"></span>
           </div>
           <div class="product-page__price-block">
-            <span class="product-page__new-price usd-symbol"></span>
+            <span class="product-page__new-price usd-symbol" id="price"></span>
           </div>
           <div class="product-page__buttons-block">
-            <button class="product-page__add-to-cart-btn"></button>
+            <button class="product-page__add-to-cart-btn" aria-label="Add to cart"></button>
             <button class="product-page__buy-now-btn">Buy now</button>
           </div>
           <div class="product-page__info-block">

@@ -109,49 +109,49 @@
                 <input type="checkbox" class="check__input type" value="succulent">
                 <span class="check__span"></span>
               </label>
-              <div aria-live="polite" class="check__found"><span id="succulent" class="check__found-num">6</span><span> / 6</span></div>
+              <div role="status" aria-live="polite" class="check__found"><span id="succulent" class="check__found-num">6</span><span> / 6</span></div>
             </li>
             <li class="check">
               <label class="check__label">Sansevieria
                 <input type="checkbox" class="check__input type" value="sansevieria">
                 <span class="check__span"></span>
               </label>
-              <div aria-live="polite" class="check__found"><span id="sansevieria" class="check__found-num">3</span><span> / 3</span></div>
+              <div role="status" aria-live="polite" class="check__found"><span id="sansevieria" class="check__found-num">3</span><span> / 3</span></div>
             </li>
             <li class="check">
               <label class="check__label">Flowering
                 <input type="checkbox" class="check__input type" value="flowering">
                 <span class="check__span"></span>
               </label>
-              <div aria-live="polite" class="check__found"><span id="flowering" class="check__found-num">5</span><span> / 5</span></div>
+              <div role="status" aria-live="polite" class="check__found"><span id="flowering" class="check__found-num">5</span><span> / 5</span></div>
             </li>
             <li class="check">
               <label class="check__label">Fern
                 <input type="checkbox" class="check__input type" value="fern">
                 <span class="check__span"></span>
               </label>
-              <div aria-live="polite" class="check__found"><span id="fern" class="check__found-num">2</span><span> / 2</span></div>
+              <div role="status" aria-live="polite" class="check__found"><span id="fern" class="check__found-num">2</span><span> / 2</span></div>
             </li>
             <li class="check">
               <label class="check__label">Lavender
                 <input type="checkbox" class="check__input type" value="lavender">
                 <span class="check__span"></span>
               </label>
-              <div aria-live="polite" class="check__found"><span id="lavender" class="check__found-num">2</span><span> / 2</span></div>
+              <div role="status" aria-live="polite" class="check__found"><span id="lavender" class="check__found-num">2</span><span> / 2</span></div>
             </li>
             <li class="check">
               <label class="check__label">Cactus
                 <input type="checkbox" class="check__input type" value="cactus">
                 <span class="check__span"></span>
               </label>
-              <div aria-live="polite" class="check__found"><span id="cactus" class="check__found-num">3</span><span> / 3</span></div>
+              <div role="status" aria-live="polite" class="check__found"><span id="cactus" class="check__found-num">3</span><span> / 3</span></div>
             </li>
             <li class="check">
               <label class="check__label">Tree
                 <input type="checkbox" class="check__input type" value="tree">
                 <span class="check__span"></span>
               </label>
-              <div aria-live="polite" class="check__found"><span id="tree" class="check__found-num">3</span><span> / 3</span></div>
+              <div role="status" aria-live="polite" class="check__found"><span id="tree" class="check__found-num">3</span><span> / 3</span></div>
             </li>
           </ul>
         </div>
@@ -164,27 +164,29 @@
                 <input type="checkbox" class="check__input" value="short">
                 <span class="check__span"></span>
               </label>
-              <div aria-live="polite" class="check__found"><span id="short" class="check__found-num">10</span><span> / 10</span></div>
+              <div role="status" aria-live="polite" class="check__found"><span id="short" class="check__found-num">10</span><span> / 10</span></div>
             </li>
             <li class="check">
               <label class="check__label">Medium
                 <input type="checkbox" class="check__input" value="medium">
                 <span class="check__span"></span>
               </label>
-              <div aria-live="polite" class="check__found"><span id="medium" class="check__found-num">9</span><span> / 9</span></div>
+              <div role="status" aria-live="polite" class="check__found"><span id="medium" class="check__found-num">9</span><span> / 9</span></div>
             </li>
             <li class="check">
               <label class="check__label">Tall
                 <input type="checkbox" class="check__input" value="tall">
                 <span class="check__span"></span>
               </label>
-              <div aria-live="polite" class="check__found"><span id="tall" class="check__found-num">5</span><span> / 5</span></div>
+              <div role="status" aria-live="polite" class="check__found"><span id="tall" class="check__found-num">5</span><span> / 5</span></div>
             </li>
           </ul>
         </div>
     
-        <div class="filter__price">
-          <p class="filter__title">Price</p>
+        <!-- <div class="filter__price">
+          <p class="filter__title">Price</p> -->
+        <div class="filter__price" aria-labelledby="price-label">
+          <p id="price-label" class="filter__title">Price</p>
           <div class="range">
             <div class="range__value">
               <label for="price min">min</label>
@@ -206,8 +208,9 @@
         </div>
     
         <div class="filter__sale check">
-          <label class="check__label">Sale
-            <input type="checkbox" class="check__input" value="true">
+          <label class="check__label">
+            Sale
+            <input type="checkbox" class="check__input" value="true" aria-checked="false">
             <span class="check__span"></span>
           </label>
           <div class="check__found"><span id="true" class="check__found-num">18</span><span> / 18</span></div>
@@ -253,12 +256,12 @@
               </div>
             </div>
             <div class="found-products">Found: <div><span class="found-products__num">24</span><span class="found-products__num"> / 24</span></div></div>
-            <input type="text" placeholder="Search" class="sort-input">
+            <input aria-label="search-input" type="text" placeholder="Search" class="sort-input">
           </div>
     
-          <div class="products__layout layout">
-            <div class="layout__portrait active"></div>
-            <div class="layout__landscape"></div>
+          <div class="layout products__layout">
+            <button class="layout__portrait active" aria-label="Portrait layout"></button>
+            <button class="layout__landscape" aria-label="Landscape layout"></button>
           </div>
         </div>
     

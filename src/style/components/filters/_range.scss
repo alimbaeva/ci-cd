@@ -17,7 +17,13 @@
       border-radius: 5px;
       text-align: center;
       border: 1px solid variables.$grey-light;
-      outline: none;
+      // outline: none;
+
+      &:focus {
+        border: 2px solid lightblue;
+        box-shadow: 0 0 5px lightblue;
+        outline: none;
+      }
     }
   }
 

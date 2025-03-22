@@ -66,6 +66,32 @@
   }
 }
 
+.button_copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 40px;
+  background-color: variables.$purple-medium;
+  color: variables.$white-medium;
+  border-radius: 20px;
+  border: 1px solid rgb(172, 169, 169);
+  transition: 0.5s;
+  cursor: pointer;
+
+  .button:focus {
+    outline: none;
+    border: 2px solid #88b4e3;
+  }
+
+  &:hover,
+  &:active {
+    background-color: variables.$purple-light;
+    color: variables.$white-medium;
+    text-decoration: none;
+  }
+}
+
 .button-unable {
   display: flex;
   align-items: center;
